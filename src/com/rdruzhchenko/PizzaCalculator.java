@@ -36,7 +36,8 @@ public class PizzaCalculator {
             }
         }
 
-        outputData.pizzasIndexes = (Integer[])list.toArray(new Integer[list.size()]);
+        outputData.pizzasIndexes = list.toArray(new Integer[list.size()]);
+
         return outputData;
     }
 }
