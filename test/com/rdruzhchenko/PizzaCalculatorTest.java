@@ -2,16 +2,15 @@ package com.rdruzhchenko;
 
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Scanner;
+import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PizzaCalculatorTest {
 
     @Test
-    public void calculateA() throws FileNotFoundException {
+    public void calculateA() throws IOException {
         // Given
         InputData inputData = new FileReader().read("a_example.in");
         PizzaCalculator pizzaCalculator = new PizzaCalculator();
@@ -24,10 +23,12 @@ class PizzaCalculatorTest {
         assertEquals(3, outputData.pizzasIndexes[0]);
         assertEquals(2, outputData.pizzasIndexes[1]);
         assertEquals(0, outputData.pizzasIndexes[2]);
+
+        new OutputWriter().write("a_example.out", outputData);
     }
 
     @Test
-    public void calculateB() throws FileNotFoundException {
+    public void calculateB() throws IOException {
         // Given
         InputData inputData = new FileReader().read("b_small.in");
         PizzaCalculator pizzaCalculator = new PizzaCalculator();
@@ -41,10 +42,12 @@ class PizzaCalculatorTest {
         assertEquals(5, outputData.pizzasIndexes[1]);
         assertEquals(3, outputData.pizzasIndexes[2]);
         assertEquals(1, outputData.pizzasIndexes[3]);
+
+        new OutputWriter().write("b_small.out", outputData);
     }
 
     @Test
-    public void calculateC() throws FileNotFoundException {
+    public void calculateC() throws IOException {
         InputData inputData = new FileReader().read("c_medium.in");
         PizzaCalculator pizzaCalculator = new PizzaCalculator();
 
@@ -66,6 +69,8 @@ class PizzaCalculatorTest {
         System.out.println(sum);
 
         assertEquals(inputData.maxSlices, sum);
+
+        new OutputWriter().write("c_medium.out", outputData);
     }
 
     @Test
